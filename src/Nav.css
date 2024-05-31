@@ -1,0 +1,46 @@
+.nav {
+    position: fixed;
+    top: 0;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    z-index: 1;
+    transition: all 0.5s ease-in;
+}
+
+
+.nav_black {
+    background-color: #111;
+}
+
+
+.nav_logo {
+    position: fixed;
+    left: 20px;
+    width: 80px;
+    object-fit: contain;
+}
+
+.nav_avatar {
+    position: fixed;
+    right: 20px;
+    width: 30px;
+    object-fit: contain;
+}
+
+.logout{
+    position: fixed;
+    right: 70px;
+    width: 90px;
+    height: 30px;
+    object-fit: contain;
+    color: white;
+    background-color: #111;
+}
+
+.logout:hover{
+    background-color: white;
+    color: #111;
+}
