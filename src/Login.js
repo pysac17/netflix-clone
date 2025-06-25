@@ -34,56 +34,58 @@ const Login = () => {
     };
 
     return (
-        <div className="auth-box">
-            <h2 className="mb-4 text-center">Sign In</h2>
-            {error && <Alert variant="danger">{error}</Alert>}
-            
-            <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Control
-                        type="email"
-                        placeholder="Email address"
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="bg-dark text-white"
+        <div className="auth-bg">
+            <div className="auth-container">
+                <div className="auth-logo">
+                    <img 
+                        src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" 
+                        alt="Netflix" 
+                        style={{ height: '45px' }}
                     />
-                </Form.Group>
+                </div>
+                <h1 className="auth-title">Sign In</h1>
+                
+                {error && <Alert variant="danger" style={{ marginBottom: '16px' }}>{error}</Alert>}
+                
+                <Form className="auth-form" onSubmit={handleSubmit}>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Control
+                            type="email"
+                            placeholder="Email or phone number"
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </Form.Group>
 
-                <Form.Group className="mb-4" controlId="formBasicPassword">
-                    <Form.Control
-                        type="password"
-                        placeholder="Password"
-                        onChange={(e) => setPassword(e.target.value)}
-                        className="bg-dark text-white"
-                    />
-                </Form.Group>
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Control
+                            type="password"
+                            placeholder="Password"
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </Form.Group>
 
-                <div className="d-grid gap-2 mb-3">
-                    <Button variant="danger" type="submit" size="lg">
+                    <Button type="submit" className="btn">
                         Sign In
                     </Button>
-                </div>
 
-                <div className="text-center mb-3">
-                    <p className="text-muted">OR</p>
-                </div>
+                    <div style={{ textAlign: 'center', margin: '16px 0' }}>
+                        <span style={{ color: '#737373' }}>OR</span>
+                    </div>
 
-
-                <div className="d-grid gap-2 mb-4">
                     <GoogleButton
-                        className="g-btn mx-auto"
+                        className="g-btn"
                         type="dark"
                         onClick={handleGoogleSignIn}
+                        style={{ width: '100%', height: '48px', margin: '16px 0' }}
                     />
-                </div>
-            </Form>
 
-            <div className="text-center">
-                <p className="text-muted mb-2">Don't have an account?</p>
-                <Link to="/signup" className="text-white text-decoration-none">
-                    <Button variant="outline-light" size="sm">
-                        Sign Up Now
-                    </Button>
-                </Link>
+                    <div className="auth-footer">
+                        <span>New to Netflix? </span>
+                        <Link to="/signup">Sign up now</Link>
+                    </div>
+                </Form>
             </div>
         </div>
     );

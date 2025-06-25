@@ -89,19 +89,58 @@ function Row_s({ title, fetchUrl, isLargeRow }) {
         localStorage.setItem('netflixMyList', JSON.stringify(myList));
     }, [myList]);
 
+    // Handle modal open/close
+    useEffect(() => {
+        if (showModal) {
+            document.body.classList.add('modal-open');
+            // Prevent background scrolling when modal is open
+            document.body.style.overflow = 'hidden';
+            // Focus the modal for better accessibility
+            if (modalRef.current) {
+                modalRef.current.focus();
+            }
+        } else {
+            document.body.classList.remove('modal-open');
+            document.body.style.overflow = 'unset';
+        }
+
+        // Cleanup
+        return () => {
+            document.body.classList.remove('modal-open');
+            document.body.style.overflow = 'unset';
+        };
+    }, [showModal]);
+
     // Close modal when clicking outside
     useEffect(() => {
         function handleClickOutside(event) {
             if (modalRef.current && !modalRef.current.contains(event.target)) {
-                setShowModal(false);
-                setTrailerUrl('');
+                closeModal();
             }
         }
-        document.addEventListener('mousedown', handleClickOutside);
+
+        if (showModal) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, []);
+    }, [showModal]);
+
+    // Close modal on Escape key
+    useEffect(() => {
+        function handleEscapeKey(event) {
+            if (event.key === 'Escape' && showModal) {
+                closeModal();
+            }
+        }
+
+        document.addEventListener('keydown', handleEscapeKey);
+        return () => {
+            document.removeEventListener('keydown', handleEscapeKey);
+        };
+    }, [showModal]);
 
     const opts = {
         height: '390',
@@ -141,7 +180,8 @@ function Row_s({ title, fetchUrl, isLargeRow }) {
 
     const closeModal = () => {
         setShowModal(false);
-        setTrailerUrl('');
+        setTrailerUrl("");
+        setSelectedMovie(null);
     };
 
     const toggleFavorite = (movie, e) => {
@@ -243,7 +283,14 @@ function Row_s({ title, fetchUrl, isLargeRow }) {
             </div>
             
             {showModal && (
-                <div className="modal_overlay" ref={modalRef}>
+                <div 
+                    className="modal_overlay" 
+                    ref={modalRef}
+                    tabIndex="-1"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="modal-title"
+                >
                     <div className="modal_container">
                         <button 
                             className="close_modal" 

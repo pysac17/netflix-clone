@@ -6,13 +6,14 @@
     justify-content: space-between;
     width: 100%;
     padding: 10px;
-    z-index: 1;
+    z-index: 1000; /* Increased from 1 to 1000 */
     transition: all 0.5s ease-in;
 }
 
 
 .nav_black {
     background-color: #111;
+    z-index: 1000; /* Added to ensure it stays on top */
 }
 
 
@@ -21,19 +22,27 @@
     right: 20px;
     width: 30px;
     object-fit: contain;
+    z-index: 1001; /* Slightly higher than nav */
 }
 
 .logout{
     position: fixed;
-    right: 70px;
+    right: 60px;
     width: 90px;
     height: 30px;
     object-fit: contain;
     color: white;
-    background-color: #111;
+    background-color: #e50914; /* Changed to Netflix red */
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 1001; /* Same as avatar */
+    transition: all 0.2s ease;
 }
 
 .logout:hover{
-    background-color: white;
-    color: #111;
+    background-color: #f40612; /* Lighter red on hover */
+    color: white;
+    transform: scale(1.05);
 }

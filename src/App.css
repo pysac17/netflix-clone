@@ -1,26 +1,226 @@
-*{
+/* Reset and Base Styles */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body {
-  background: url(https://miro.medium.com/max/1400/1*5lyavS59mazOFnb55Z6znQ.png);
+/* Body and HTML */
+html, body, #root {
+  height: 100%;
+  width: 100%;
   overflow-x: hidden;
 }
 
-.app{
+/* Auth Page Styling */
+.auth-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.6) 100%
+    ),
+    url('https://miro.medium.com/v2/resize:fit:1400/1*5lyavS59mazOFnb55Z6znQ.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1;
+  overflow-y: auto;
+}
+
+.auth-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 450px;
+  padding: 60px 68px 40px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
+  position: relative;
+  overflow-y: auto;
+  max-height: 90vh;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.auth-container::-webkit-scrollbar {
+  display: none;
+}
+
+.auth-logo {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.auth-logo img {
+  height: 45px;
+  width: auto;
+}
+
+.auth-title {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+
+.auth-form .form-control {
+  width: 100%;
+  height: 50px;
+  padding: 16px 20px 0;
+  background: #333;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.auth-form .form-control:focus {
+  background: #454545;
+  outline: none;
+}
+
+.auth-form .btn {
+  width: 100%;
+  height: 48px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px 0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  background: #e50914;
+  color: white;
+  font-weight: 700;
+}
+
+.auth-form .btn:hover {
+  background: #f40612;
+}
+
+.g-btn {
+  width: 100%;
+  height: 48px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px 0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  background: #4285f4;
+  color: white;
+  position: relative;
+  padding: 0;
+}
+
+.g-btn > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  height: 48px;
+  width: 48px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 4px 0 0 4px;
+}
+
+.g-btn > div > svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Hide the default Google button text */
+.g-btn > div:last-child {
+  width: 100%;
+  padding-left: 48px;
+  box-sizing: border-box;
+}
+
+.auth-footer {
+  margin-top: 16px;
+  text-align: center;
+  color: #737373;
+  font-size: 16px;
+}
+
+.auth-footer a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 5px;
+  transition: color 0.2s ease;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+  color: #e50914;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .auth-container {
+    padding: 40px 20px;
+    margin: 0 20px;
+    max-height: 95vh;
+  }
+  
+  .auth-title {
+    font-size: 26px;
+  }
+  
+  .auth-form .form-control,
+  .btn,
+  .g-btn {
+    height: 44px;
+  }
+  
+  .g-btn > div {
+    height: 44px;
+  }
+}
+
+/* Main App Styles */
+.app {
   background-color: #111;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .box{
   border:1pxsolid #dfdfdf;
   background-color: #fff;
-}
-
-.g-btn{
-  width: 100%;
-  height: 40px;
-  line-height: 40px;
-  font-size: 15px;
 }
 
 .g-btn > div, .g-btn>div>svg{
