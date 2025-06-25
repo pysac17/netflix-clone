@@ -1,9 +1,9 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: "https://www.omdbapi.com",
+    baseURL: process.env.REACT_APP_OMDB_BASE_URL || "https://www.omdbapi.com",
     params: {
-        apikey: "faf7e5bb",  // Free OMDB API key (rate limited)
+        apikey: process.env.REACT_APP_OMDB_API_KEY,
         type: "movie"
     }
 });
