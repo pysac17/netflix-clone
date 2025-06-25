@@ -17,36 +17,39 @@ return (
         <Row_s
             title="Trending Now"
             fetchUrl={ requests.fetchTrending }
+            isLargeRow
         />
         <Row_s
             title="Top Rated"
             fetchUrl={ requests.fetchTopRated }
+            isLargeRow
         />
         <Row_s
             title="Action Movies"
             fetchUrl={ requests.fetchActionMovies }
+            isLargeRow
         />
         <Row_s
             title="Comedy Movies"
             fetchUrl={ requests.fetchComedyMovies }
+            isLargeRow
         />
         <Row_s
             title="Horror movies"
             fetchUrl={ requests.fetchHorrorMovies }
+            isLargeRow
         />
         <Row_s
             title="Romance Movies"
             fetchUrl={ requests.fetchRomanceMovies }
+            isLargeRow
         />
         <Row_s
             title="Fantasy"
             fetchUrl={ requests.fetchFantasy }
+            isLargeRow
         />
-        <Row_s
-            title="My List"
-            // fetchUrl={ <mylist /> } 
-        />
-        <myList />
+
     </div>
 );
 }

@@ -15,47 +15,51 @@ const Signup = () => {
         e.preventDefault();
         setError("");
         try {
-        await signUp(email, password);
-        navigate("/");
+            await signUp(email, password);
+            navigate("/home");
         } catch (err) {
-        setError(err.message);
+            setError(err.message);
         }
     };
 
     return (
-        <>
-            <div style={{height:"80px"}}></div>
-        <div className="p-4 box mt-3 text-center" style={{width:"300px", margin: "auto", background: "rgba(255, 255, 255, 0.6)"}}>
-            <h2 className="mb-3">Signup</h2>
+        <div className="auth-box">
+            <h2 className="mb-4 text-center">Sign Up</h2>
             {error && <Alert variant="danger">{error}</Alert>}
             <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Control
-                type="email"
-                placeholder="Email address"
-                onChange={(e) => setEmail(e.target.value)}
-                />
-            </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Control
+                        type="email"
+                        placeholder="Email address"
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="bg-dark text-white"
+                    />
+                </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Control
-                type="password"
-                placeholder="Password"
-                onChange={(e) => setPassword(e.target.value)}
-                />
-            </Form.Group>
+                <Form.Group className="mb-4" controlId="formBasicPassword">
+                    <Form.Control
+                        type="password"
+                        placeholder="Password"
+                        onChange={(e) => setPassword(e.target.value)}
+                        className="bg-dark text-white"
+                    />
+                </Form.Group>
 
-            <div className="d-grid gap-2">
-                <Button variant="primary" type="Submit">
-                Sign up
-                </Button>
-            </div>
+                <div className="d-grid gap-2 mb-3">
+                    <Button variant="danger" type="submit" size="lg">
+                        Sign Up
+                    </Button>
+                </div>
             </Form>
+            <div className="text-center">
+                <p className="text-muted mb-2">Already have an account?</p>
+                <Link to="/" className="text-white text-decoration-none">
+                    <Button variant="outline-light" size="sm">
+                        Sign In Now
+                    </Button>
+                </Link>
+            </div>
         </div>
-        <div className="p-4 box mt-3 text-center" style={{background: "rgba(0, 0, 0, 0.6)", color:"white", width:"300px", margin:"auto"}}>
-            Already have an account? <Link to="/" style={{color:"white"}}>Log In</Link>
-        </div>
-        </>
     );
 };
 

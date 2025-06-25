@@ -9,22 +9,48 @@ import { UserAuthContextProvider } from "./UserAuthContext";
 
 function App() {
   return (
-    <div>
-      <UserAuthContextProvider>
-        <Routes>
-          <Route
-            path="/home"
-            element={
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="/" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-        </Routes>
-        </UserAuthContextProvider>
-      </div>
+    <UserAuthContextProvider>
+      <Routes>
+        <Route
+          path="/home"
+          element={
+            <div className="app">
+              <div className="content-container">
+                <Container>
+                  <Row>
+                    <Col>
+                      <ProtectedRoute>
+                        <Home />
+                      </ProtectedRoute>
+                    </Col>
+                  </Row>
+                </Container>
+              </div>
+            </div>
+          }
+        />
+        <Route 
+          path="/" 
+          element={
+            <div className="auth-bg">
+              <div className="auth-container">
+                <Login />
+              </div>
+            </div>
+          } 
+        />
+        <Route 
+          path="/signup" 
+          element={
+            <div className="auth-bg">
+              <div className="auth-container">
+                <Signup />
+              </div>
+            </div>
+          } 
+        />
+      </Routes>
+    </UserAuthContextProvider>
   );
 }
 

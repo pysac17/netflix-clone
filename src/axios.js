@@ -1,7 +1,11 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: "https://api.themoviedb.org/3/",
+    baseURL: "https://www.omdbapi.com",
+    params: {
+        apikey: "faf7e5bb",  // Free OMDB API key (rate limited)
+        type: "movie"
+    }
 });
 
 export default instance;

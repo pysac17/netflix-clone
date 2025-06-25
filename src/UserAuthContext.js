@@ -7,7 +7,7 @@ import {
     GoogleAuthProvider,
     signInWithPopup,
 } from "firebase/auth";
-import { auth } from "./firebas";
+import { auth } from "./firebase";
 
 const userAuthContext = createContext();
 
@@ -23,11 +23,15 @@ export function UserAuthContextProvider({ children }) {
     function logOut() {
         return signOut(auth);
     }
-    function googleSignIn() {
+    async function googleSignIn() {
         const googleAuthProvider = new GoogleAuthProvider();
-        return signInWithPopup(auth, googleAuthProvider);
+        try {
+            return await signInWithPopup(auth, googleAuthProvider);
+        } catch (error) {
+            console.error("Google Sign-In Error:", error);
+            throw error; // Re-throw to handle in the component
+        }
     }
-
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
         // console.log("Auth", currentuser);

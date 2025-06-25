@@ -1,14 +1,80 @@
-const API_KEY = "f4526ed1687913ca02e552a2c4265208";
+const API_KEY = "faf7e5bb"; // Using the same API key as in axios.js
 
 const requests = {
-    fetchTrending:`/trending/all/week?api_key=${API_KEY}&language=en-US`,
-    fetchNetflixOriginals:`/discover/tv?api_key=${API_KEY}&with_networks=213`,
-    fetchTopRated: `/movie/top_rated?api_key=${API_KEY}&language=en-US`,
-    fetchActionMovies:`/discover/movie?api_key=${API_KEY}&with_genres=28`,
-    fetchComedyMovies:`/discover/movie?api_key=${API_KEY}&with_genres=35`,
-    fetchHorrorMovies:`/discover/movie?api_key=${API_KEY}&with_genres=27`,
-    fetchRomanceMovies:`/discover/movie?api_key=${API_KEY}&with_genres=10749`,
-    fetchFantasy:`/discover/movie?api_key=${API_KEY}&with_genres=14`,
-}
+    fetchTrending: {
+        url: '/',
+        params: {
+            s: '2023',
+            type: 'movie',
+            y: '2023',
+            page: 1,
+            apikey: API_KEY
+        }
+    },
+    fetchNetflixOriginals: {
+        url: '/',
+        params: {
+            s: 'netflix',
+            type: 'movie',
+            page: 1,
+            apikey: API_KEY
+        }
+    },
+    fetchTopRated: {
+        url: '/',
+        params: {
+            s: 'movie',
+            type: 'movie',
+            sort: 'rating',
+            page: 1,
+            apikey: API_KEY
+        }
+    },
+    fetchActionMovies: {
+        url: '/',
+        params: {
+            s: 'action',
+            type: 'movie',
+            page: 1,
+            apikey: API_KEY
+        }
+    },
+    fetchComedyMovies: {
+        url: '/',
+        params: {
+            s: 'comedy',
+            type: 'movie',
+            page: 1,
+            apikey: API_KEY
+        }
+    },
+    fetchHorrorMovies: {
+        url: '/',
+        params: {
+            s: 'horror',
+            type: 'movie',
+            page: 1,
+            apikey: API_KEY
+        }
+    },
+    fetchRomanceMovies: {
+        url: '/',
+        params: {
+            s: 'romance',
+            type: 'movie',
+            page: 1,
+            apikey: API_KEY
+        }
+    },
+    fetchFantasy: {
+        url: '/',
+        params: {
+            s: 'fantasy',
+            type: 'movie',
+            page: 1,
+            apikey: API_KEY
+        }
+    },
+};
 
 export default requests;
